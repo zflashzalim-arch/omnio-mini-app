@@ -1,1 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OMNIO Mini App</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">AI HEALTH ASSISTANT</p>
+        <h1>OMNIO</h1>
+        <p id="helloText">Добро пожаловать в OMNIO</p>
+      </div>
+      <div class="score">
+        <span>Health Score</span>
+        <strong>72</strong>
+      </div>
+    </section>
 
+    <section class="grid">
+      <button class="card" data-action="food">
+        <span>🍽</span>
+        <b>Еда</b>
+        <small>Фото еды</small>
+      </button>
+
+      <button class="card" data-action="water">
+        <span>💧</span>
+        <b>Вода</b>
+        <small>Дневная норма</small>
+      </button>
+
+      <button class="card" data-action="sleep">
+        <span>😴</span>
+        <b>Сон</b>
+        <small>Качество сна</small>
+      </button>
+
+      <button class="card" data-action="labs">
+        <span>📋</span>
+        <b>Анализы</b>
+        <small>Фото/PDF</small>
+      </button>
+
+      <button class="card" data-action="mood">
+        <span>😊</span>
+        <b>Настроение</b>
+        <small>Стресс и энергия</small>
+      </button>
+
+      <button class="card" data-action="summary">
+        <span>📊</span>
+        <b>Отчёт</b>
+        <small>Итог дня</small>
+      </button>
+    </section>
+
+    <section class="today">
+      <h2>Сегодня</h2>
+
+      <div class="row">
+        <span>Вода</span>
+        <b>0 мл</b>
+      </div>
+
+      <div class="row">
+        <span>Сон</span>
+        <b>не записан</b>
+      </div>
+
+      <div class="row">
+        <span>Шаги</span>
+        <b>не записаны</b>
+      </div>
+    </section>
+
+    <button class="primary" data-action="profile">
+      Открыть профиль OMNIO
+    </button>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

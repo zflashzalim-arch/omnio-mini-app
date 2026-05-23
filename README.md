@@ -1,22 +1,6 @@
 # OMNIO Telegram Mini App
 
-Это первая версия приложения внутри Telegram.
+Рабочая версия Mini App.
 
-## Как запустить локально
-
-Открой `index.html` в браузере.
-
-## Как залить на Vercel
-
-1. Создай новый проект на Vercel.
-2. Загрузи папку `mini_app`.
-3. В настройках оставь Framework Preset: `Other`.
-4. После деплоя скопируй HTTPS-ссылку.
-5. Добавь в `.env` основного бота:
-
-```env
-MINI_APP_URL=https://твоя-ссылка.vercel.app
-```
-
-6. Перезапусти бота.
-7. В Telegram нажми `/app` или кнопку `📱 Открыть приложение`.
+Кнопки отправляют данные в Telegram Bot через Telegram.WebApp.sendData().
+Для работы нужен обработчик message.web_app_data в handlers.py.
