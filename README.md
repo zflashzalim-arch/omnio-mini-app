@@ -1,6 +1,15 @@
 # OMNIO Telegram Mini App
 
-Рабочая версия Mini App.
+Версия с внутренними экранами:
+- Вода
+- Сон
+- Еда
+- Анализы
+- Настроение
+- Отчёт
 
-Кнопки отправляют данные в Telegram Bot через Telegram.WebApp.sendData().
-Для работы нужен обработчик message.web_app_data в handlers.py.
+Файлы нужно заменить в Vercel/GitHub:
+- index.html
+- app.js
+- styles.css
+- README.md

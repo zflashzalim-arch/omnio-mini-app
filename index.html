@@ -2,85 +2,137 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OMNIO Mini App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>OMNIO</title>
   <link rel="stylesheet" href="./styles.css" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
   <main class="app">
-    <section class="hero">
-      <div>
-        <p class="eyebrow">AI HEALTH ASSISTANT</p>
-        <h1>OMNIO</h1>
-        <p id="helloText">Добро пожаловать в OMNIO</p>
-      </div>
-      <div class="score">
-        <span>Health Score</span>
-        <strong>72</strong>
-      </div>
+    <section id="homeScreen" class="screen active">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">AI Health Assistant</p>
+          <h1>OMNIO</h1>
+          <p id="hello">Твой личный health-помощник</p>
+        </div>
+        <div class="score">
+          <span>Health Score</span>
+          <strong>72</strong>
+        </div>
+      </section>
+
+      <section class="grid">
+        <button class="card" data-screen="foodScreen">
+          <span>📸</span>
+          <b>Еда</b>
+          <small>Фото блюда</small>
+        </button>
+        <button class="card" data-screen="waterScreen">
+          <span>💧</span>
+          <b>Вода</b>
+          <small>Учёт за день</small>
+        </button>
+        <button class="card" data-screen="sleepScreen">
+          <span>😴</span>
+          <b>Сон</b>
+          <small>Качество сна</small>
+        </button>
+        <button class="card" data-screen="labsScreen">
+          <span>📋</span>
+          <b>Анализы</b>
+          <small>Фото/PDF</small>
+        </button>
+        <button class="card" data-screen="moodScreen">
+          <span>😊</span>
+          <b>Настроение</b>
+          <small>Стресс и энергия</small>
+        </button>
+        <button class="card" data-screen="reportScreen">
+          <span>📊</span>
+          <b>Отчёт</b>
+          <small>Итог дня</small>
+        </button>
+      </section>
+
+      <section class="panel">
+        <h2>Сегодня</h2>
+        <div class="row"><span>Вода</span><b id="waterToday">0 мл</b></div>
+        <div class="row"><span>Сон</span><b id="sleepToday">не записан</b></div>
+        <div class="row"><span>Настроение</span><b id="moodToday">не записано</b></div>
+      </section>
     </section>
 
-    <section class="grid">
-      <button class="card" data-action="food">
-        <span>🍽</span>
-        <b>Еда</b>
-        <small>Фото еды</small>
-      </button>
-
-      <button class="card" data-action="water">
-        <span>💧</span>
-        <b>Вода</b>
-        <small>Дневная норма</small>
-      </button>
-
-      <button class="card" data-action="sleep">
-        <span>😴</span>
-        <b>Сон</b>
-        <small>Качество сна</small>
-      </button>
-
-      <button class="card" data-action="labs">
-        <span>📋</span>
-        <b>Анализы</b>
-        <small>Фото/PDF</small>
-      </button>
-
-      <button class="card" data-action="mood">
-        <span>😊</span>
-        <b>Настроение</b>
-        <small>Стресс и энергия</small>
-      </button>
-
-      <button class="card" data-action="summary">
-        <span>📊</span>
-        <b>Отчёт</b>
-        <small>Итог дня</small>
-      </button>
+    <section id="waterScreen" class="screen">
+      <button class="back">← Назад</button>
+      <h2>💧 Вода</h2>
+      <p class="muted">Добавляй воду в течение дня. Данные сохраняются в приложении.</p>
+      <div class="bigNumber"><span id="waterAmount">0</span> мл</div>
+      <div class="actions">
+        <button data-water="250">+250 мл</button>
+        <button data-water="500">+500 мл</button>
+      </div>
+      <button class="primary" data-send="water">Отправить воду в бота</button>
     </section>
 
-    <section class="today">
-      <h2>Сегодня</h2>
-
-      <div class="row">
-        <span>Вода</span>
-        <b>0 мл</b>
-      </div>
-
-      <div class="row">
-        <span>Сон</span>
-        <b>не записан</b>
-      </div>
-
-      <div class="row">
-        <span>Шаги</span>
-        <b>не записаны</b>
-      </div>
+    <section id="sleepScreen" class="screen">
+      <button class="back">← Назад</button>
+      <h2>😴 Сон</h2>
+      <p class="muted">Запиши сон, чтобы OMNIO связывал восстановление, энергию и аппетит.</p>
+      <label>Часы сна</label>
+      <input id="sleepHours" type="number" step="0.5" placeholder="Например: 7.5" />
+      <label>Качество сна</label>
+      <select id="sleepQuality">
+        <option>Хороший</option>
+        <option>Средний</option>
+        <option>Плохой</option>
+        <option>Отличный</option>
+      </select>
+      <button class="primary" data-send="sleep">Сохранить сон</button>
     </section>
 
-    <button class="primary" data-action="profile">
-      Открыть профиль OMNIO
-    </button>
+    <section id="foodScreen" class="screen">
+      <button class="back">← Назад</button>
+      <h2>📸 Еда</h2>
+      <p class="muted">Фото еды пока отправляй прямо в чат бота. Здесь будет история питания и Food Score.</p>
+      <button class="primary" data-send="food">Открыть анализ еды в боте</button>
+    </section>
+
+    <section id="labsScreen" class="screen">
+      <button class="back">← Назад</button>
+      <h2>📋 Анализы</h2>
+      <p class="muted">Фото или PDF анализов пока отправляй в чат. OMNIO сохранит их в профиль.</p>
+      <button class="primary" data-send="labs">Открыть анализы в боте</button>
+    </section>
+
+    <section id="moodScreen" class="screen">
+      <button class="back">← Назад</button>
+      <h2>😊 Настроение</h2>
+      <p class="muted">Оцени настроение, стресс и энергию.</p>
+      <label>Настроение</label>
+      <select id="moodValue">
+        <option value="8">😊 Хорошее</option>
+        <option value="5">😐 Среднее</option>
+        <option value="3">😔 Плохое</option>
+        <option value="1">😫 Очень плохо</option>
+      </select>
+      <label>Стресс 1–10</label>
+      <input id="stressValue" type="number" min="1" max="10" placeholder="Например: 4" />
+      <label>Энергия 1–10</label>
+      <input id="energyValue" type="number" min="1" max="10" placeholder="Например: 7" />
+      <button class="primary" data-send="mood">Сохранить настроение</button>
+    </section>
+
+    <section id="reportScreen" class="screen">
+      <button class="back">← Назад</button>
+      <h2>📊 Отчёт дня</h2>
+      <div class="panel">
+        <div class="row"><span>Вода</span><b id="reportWater">0 мл</b></div>
+        <div class="row"><span>Сон</span><b id="reportSleep">не записан</b></div>
+        <div class="row"><span>Настроение</span><b id="reportMood">не записано</b></div>
+      </div>
+      <button class="primary" data-send="report">Получить AI-отчёт в боте</button>
+    </section>
   </main>
 
   <script src="./app.js"></script>
